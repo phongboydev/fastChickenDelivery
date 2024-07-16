@@ -24,7 +24,6 @@ class UserSeeder extends Seeder
         ];
         $users = [
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Galasasen Slixby',
                 "company" => 'Yotz PVT LTD',
                 "role" => 'editor',
@@ -38,7 +37,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Halsey Redmore',
                 "company" => 'Skinder PVT LTD',
                 "role" => 'author',
@@ -52,7 +50,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Marjory Sicely',
                 "company" => 'Oozz PVT LTD',
                 "role" => 'maintainer',
@@ -66,7 +63,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Cyrill Risby',
                 "company" => 'Oozz PVT LTD',
                 "role" => 'maintainer',
@@ -80,7 +76,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Maggy Hurran',
                 "company" => 'Aimbo PVT LTD',
                 "role" => 'subscriber',
@@ -94,7 +89,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Silvain Halstead',
                 "company" => 'Jaxbean PVT LTD',
                 "role" => 'author',
@@ -108,7 +102,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Breena Gallemore',
                 "company" => 'Jazzy PVT LTD',
                 "role" => 'subscriber',
@@ -122,7 +115,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-PayPal',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Kathryne Liger',
                 "company" => 'Pixoboo PVT LTD',
                 "role" => 'author',
@@ -136,7 +128,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Franz Scotfurth',
                 "company" => 'Tekfly PVT LTD',
                 "role" => 'subscriber',
@@ -150,7 +141,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Jillene Bellany',
                 "company" => 'Gigashots PVT LTD',
                 "role" => 'maintainer',
@@ -164,7 +154,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Jonah Wharlton',
                 "company" => 'Eare PVT LTD',
                 "role" => 'subscriber',
@@ -178,7 +167,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Seth Hallam',
                 "company" => 'Yakitri PVT LTD',
                 "role" => 'subscriber',
@@ -192,7 +180,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-PayPal',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Yoko Pottie',
                 "company" => 'Leenti PVT LTD',
                 "role" => 'subscriber',
@@ -206,7 +193,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-PayPal',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Maximilianus Krause',
                 "company" => 'Digitube PVT LTD',
                 "role" => 'author',
@@ -220,7 +206,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-PayPal',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Zsazsa McCleverty',
                 "company" => 'Kaymbo PVT LTD',
                 "role" => 'maintainer',
@@ -234,7 +219,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-PayPal',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Bentlee Emblin',
                 "company" => 'Yambee PVT LTD',
                 "role" => 'author',
@@ -248,7 +232,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-PayPal',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Brockie Myles',
                 "company" => 'Wikivu PVT LTD',
                 "role" => 'maintainer',
@@ -262,7 +245,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Bertha Biner',
                 "company" => 'Twinte PVT LTD',
                 "role" => 'editor',
@@ -276,7 +258,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Travus Bruntjen',
                 "company" => 'Cog"idoo PVT LTD',
                 "role" => 'admin',
@@ -290,7 +271,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Wesley Burland',
                 "company" => 'Bubblemix PVT LTD',
                 "role" => 'editor',
@@ -304,7 +284,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Selina Kyle',
                 "company" => 'Wayne Enterprises',
                 "role" => 'admin',
@@ -318,7 +297,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Jameson Lyster',
                 "company" => 'Quaxo PVT LTD',
                 "role" => 'editor',
@@ -332,7 +310,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Kare Skitterel',
                 "company" => 'Ainyx PVT LTD',
                 "role" => 'maintainer',
@@ -346,7 +323,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Cleavland Hatherleigh',
                 "company" => 'Flipopia PVT LTD',
                 "role" => 'admin',
@@ -360,7 +336,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Adeline Micco',
                 "company" => 'Topicware PVT LTD',
                 "role" => 'admin',
@@ -374,7 +349,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto Debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Hugh Hasson',
                 "company" => 'Skinix PVT LTD',
                 "role" => 'admin',
@@ -388,7 +362,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto Debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Germain Jacombs',
                 "company" => 'Youopia PVT LTD',
                 "role" => 'editor',
@@ -402,7 +375,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto Debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Bree Kilday',
                 "company" => 'Jetpulse PVT LTD',
                 "role" => 'maintainer',
@@ -416,7 +388,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto Debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Candice Pinyon',
                 "company" => 'Kare PVT LTD',
                 "role" => 'maintainer',
@@ -430,7 +401,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Isabel Mallindine',
                 "company" => 'Voomm PVT LTD',
                 "role" => 'subscriber',
@@ -444,7 +414,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Gwendolyn Meineken',
                 "company" => 'Oyondu PVT LTD',
                 "role" => 'admin',
@@ -458,7 +427,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Rafaellle Snowball',
                 "company" => 'Fivespan PVT LTD',
                 "role" => 'editor',
@@ -472,7 +440,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Rochette Emer',
                 "company" => 'Thoughtworks PVT LTD',
                 "role" => 'admin',
@@ -486,7 +453,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Ophelie Fibbens',
                 "company" => 'Jaxbean PVT LTD',
                 "role" => 'subscriber',
@@ -500,7 +466,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Stephen MacGilfoyle',
                 "company" => 'Browseblab PVT LTD',
                 "role" => 'maintainer',
@@ -514,7 +479,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Cash',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Bradan Rosebotham',
                 "company" => 'Agivu PVT LTD',
                 "role" => 'subscriber',
@@ -528,7 +492,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Skip Hebblethwaite',
                 "company" => 'Katz PVT LTD',
                 "role" => 'admin',
@@ -542,7 +505,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Moritz Piccard',
                 "company" => 'Twitternation PVT LTD',
                 "role" => 'maintainer',
@@ -556,7 +518,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Tyne W"idmore',
                 "company" => 'Yombu PVT LTD',
                 "role" => 'subscriber',
@@ -570,7 +531,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto Debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Florenza Desporte',
                 "company" => 'Kamba PVT LTD',
                 "role" => 'author',
@@ -584,7 +544,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto Debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Edwina Baldetti',
                 "company" => 'Dazzlesphere PVT LTD',
                 "role" => 'maintainer',
@@ -598,7 +557,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto Debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Benedetto Rossiter',
                 "company" => 'Mybuzz PVT LTD',
                 "role" => 'editor',
@@ -612,7 +570,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto Debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Micaela McNirlan',
                 "company" => 'Tambee PVT LTD',
                 "role" => 'admin',
@@ -626,7 +583,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Auto Debit',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Vladamir Koschek',
                 "company" => 'Centimia PVT LTD',
                 "role" => 'author',
@@ -640,7 +596,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Corrie Perot',
                 "company" => 'Flipopia PVT LTD',
                 "role" => 'subscriber',
@@ -654,7 +609,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Saunder Offner',
                 "company" => 'Skalith PVT LTD',
                 "role" => 'maintainer',
@@ -668,7 +622,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Karena Courtliff',
                 "company" => 'Feedfire PVT LTD',
                 "role" => 'admin',
@@ -682,7 +635,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-Credit Card',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Onfre Wind',
                 "company" => 'Thoughtmix PVT LTD',
                 "role" => 'admin',
@@ -696,7 +648,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-PayPal',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Paulie Durber',
                 "company" => 'Babbleblab PVT LTD',
                 "role" => 'subscriber',
@@ -710,7 +661,6 @@ class UserSeeder extends Seeder
                 "billing" => 'Manual-PayPal',
             ],
             [
-                "id" => Str::uuid(),
                 "fullName" => 'Beverlie Krabbe',
                 "company" => 'Kaymbo PVT LTD',
                 "role" => 'editor',
