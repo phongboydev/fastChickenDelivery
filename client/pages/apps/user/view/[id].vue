@@ -33,6 +33,9 @@ const tabs = [
 ]
 
 const { data: userData } = await useApi(`/apps/users/${ route.params.id }`)
+
+console.log(userData)
+
 if (userData.value) {
   const [firstName, lastName] = userData.value.fullName.split(' ')
 

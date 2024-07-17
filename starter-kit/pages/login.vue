@@ -20,9 +20,47 @@ const form = ref({
   remember: false,
 })
 
+const refVForm = ref()
+const route = useRoute()
+
 const isPasswordVisible = ref(false)
 const authThemeImg = useGenerateImageVariant(authV2LoginIllustrationLight, authV2LoginIllustrationDark, authV2LoginIllustrationBorderedLight, authV2LoginIllustrationBorderedDark, true)
 const authThemeMask = useGenerateImageVariant(authV2MaskLight, authV2MaskDark)
+
+async function login() {
+  try {
+    const res = await $api('/auth/login', {
+      method: 'POST',
+      body: {
+        email: form.value.email,
+        password: form.value.password,
+      },
+      onResponseError({ response }) {
+
+      },
+    })
+
+    const { accessToken, userData, userAbilityRules } = res
+
+    // useCookie('userAbilityRules').value = userAbilityRules
+    // ability.update(userAbilityRules)
+
+    // useCookie('userData').value = userData
+    useCookie('accessToken').value = accessToken
+
+    navigateTo(route.query.to ? String(route.query.to) : '/', { replace: true })
+  }
+  catch (err) {
+    console.error(err)
+  }
+}
+
+const onSubmit = () => {
+  refVForm.value?.validate().then(({ valid: isValid }) => {
+    if (isValid)
+      login()
+  })
+}
 </script>
 
 <template>
@@ -97,7 +135,10 @@ const authThemeMask = useGenerateImageVariant(authV2MaskLight, authV2MaskDark)
           </VAlert>
         </VCardText>
         <VCardText>
-          <VForm @submit.prevent="() => { }">
+          <VForm
+            ref="refVForm"
+            @submit.prevent="onSubmit"
+          >
             <VRow>
               <!-- email -->
               <VCol cols="12">

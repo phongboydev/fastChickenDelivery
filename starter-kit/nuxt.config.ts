@@ -54,6 +54,14 @@ export default defineNuxtConfig({
     typedPages: true,
   },
 
+  runtimeConfig: {
+
+    // Public keys that are exposed to the client.
+    public: {
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || '/api',
+    },
+  },
+
   typescript: {
     tsConfig: {
       compilerOptions: {

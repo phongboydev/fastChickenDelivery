@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController
 {
@@ -29,7 +30,7 @@ class AuthController
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
-        logger("heheh");
+
         if($user->save()){
             $tokenResult = $user->createToken('Personal Access Token');
             $token = $tokenResult->plainTextToken;
@@ -42,5 +43,65 @@ class AuthController
         else{
             return response()->json(['error'=>'Provide proper details']);
         }
+    }
+
+    /**
+     * Login user and create token
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+            'remember_me' => 'boolean'
+        ]);
+
+        $credentials = request(['email','password']);
+        if(!Auth::attempt($credentials))
+        {
+            return response()->json([
+                'message' => 'Unauthorized'
+            ],401);
+        }
+
+        $user = $request->user();
+        $tokenResult = $user->createToken('Personal Access Token');
+        $token = $tokenResult->plainTextToken;
+
+        return response()->json([
+            'accessToken' =>$token,
+            'token_type' => 'Bearer',
+        ]);
+    }
+
+    /**
+     * Get the authenticated User
+     *
+     * @param Request $request
+     * @return JsonResponse [json] user object
+     */
+    public function user(Request $request)
+    {
+        return response()->json($request->user());
+    }
+
+    /**
+     * Logout user (Revoke the token)
+     *
+     * @param Request $request
+     * @return JsonResponse [string] message
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return response()->json([
+            'message' => 'Successfully logged out'
+        ]);
+
     }
 }

@@ -71,6 +71,8 @@ const { data: permissionsData } = await useApi(createUrl('/apps/permissions', {
   },
 }))
 
+console.log(permissionsData)
+
 const permissions = computed(() => permissionsData.value.permissions)
 const totalPermissions = computed(() => permissionsData.value.totalPermissions)
 

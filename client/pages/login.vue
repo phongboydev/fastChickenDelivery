@@ -54,7 +54,7 @@ async function login() {
 
   // If error is not null => Error is occurred
   if (response && response.error) {
-    const apiStringifiedError = response.error
+    const apiStringifiedError =  response.error
     const apiError = JSON.parse(apiStringifiedError)
 
     errors.value = apiError.data  
@@ -68,6 +68,8 @@ async function login() {
 
   // Update user abilities
   const { user } = sessionData.value
+
+  console.log('User:', user)
 
   useCookie('userData').value = user
 
