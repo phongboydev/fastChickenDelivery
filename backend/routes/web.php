@@ -1,11 +1,9 @@
 <?php
 
 use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\InvoiceExportController;
 use App\Http\Controllers\InvoiceImportController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StatisticalController;
