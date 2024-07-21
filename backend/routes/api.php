@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
         // User
         Route::get('/users', [UserController::class, 'index']);
+        Route::get('/getUsers', [UserController::class, 'getUsers']);
         Route::get('/users/{id}', [UserController::class, 'show']);
         Route::put('/users/{id}', [UserController::class, 'update']);
         Route::post('/users', [UserController::class, 'store']);
@@ -58,6 +59,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::put('/product-by-days/{id}', [ProductByDayController::class, 'update']);
         Route::post('/product-by-days', [ProductByDayController::class, 'store']);
         Route::delete('/product-by-days/{id}', [ProductByDayController::class, 'destroy']);
+        Route::get('/ger-price-product-by-day', [ProductByDayController::class, 'getPriceProductByDay']);
 
         // Order
         Route::get('/orders', [OrderController::class, 'index']);

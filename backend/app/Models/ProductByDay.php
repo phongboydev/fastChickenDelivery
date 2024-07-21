@@ -21,7 +21,7 @@ class ProductByDay extends Model
     ];
 
     protected $casts = [
-        'price' => PriceCast::class,
+//        'price' => PriceCast::class,
     ];
 
     // Set the primary key type to string

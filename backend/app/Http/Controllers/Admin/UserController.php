@@ -156,4 +156,10 @@ class UserController extends Controller
         }
         return $this->responseData(404, 'User not found');
     }
+
+    public function getUsers()
+    {
+        $users = User::all();
+        return $this->responseData(200, 'Success', $users);
+    }
 }

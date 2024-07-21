@@ -116,4 +116,11 @@ class ProductByDayController
         }
         return $this->responseData(404, 'ProductByDay not found');
     }
+
+    public function getPriceProductByDay()
+    {
+        $request = request()->all();
+        $priceProductByDay = ProductByDay::where('product_id', $request['product_id'])->where('date', $request['date'])->select('price')->first();
+        return $this->responseData(200, 'ProductByDay status changed', $priceProductByDay);
+    }
 }
