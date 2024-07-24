@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductByDayController;
 use App\Http\Controllers\Admin\ProductController;
@@ -68,5 +69,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('/orders', [OrderController::class, 'store']);
         Route::delete('/orders/{id}', [OrderController::class, 'destroy']);
 
+        // Invoice
+        Route::get('/invoices', [InvoiceController::class, 'index']);
+        Route::get('/invoices/{id}', [InvoiceController::class, 'show']);
+        Route::put('/invoices/{id}', [InvoiceController::class, 'update']);
+        Route::post('/invoices', [InvoiceController::class, 'store']);
+        Route::delete('/invoices/{id}', [InvoiceController::class, 'destroy']);
     });
 });

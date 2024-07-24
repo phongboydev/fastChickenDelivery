@@ -178,7 +178,6 @@ const isAddNewUserDrawerVisible = ref(false)
 const selectIdCurrent = ref(0)
 
 const addNewUser = async userData => {
-  console.log("heheh")
   await $api('/admin/users', {
     method: 'POST',
     body: userData,
@@ -195,8 +194,6 @@ const deleting = async id => {
 }
 
 const deleted = async isConfirmed => {
-  console.log("hôhhoo")
-  console.log(selectIdCurrent)
   if (isConfirmed) {
     await $api(`/admin/users/${ selectIdCurrent.value }`, { method: 'DELETE' })
 

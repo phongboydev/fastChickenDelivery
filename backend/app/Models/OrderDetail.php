@@ -5,10 +5,11 @@ namespace App\Models;
 use App\Models\Concerns\UsesUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OrderDetail extends Model
 {
-    use HasFactory, UsesUuid;
+    use HasFactory, UsesUuid, SoftDeletes;
 
     protected $table = 'order_details';
 

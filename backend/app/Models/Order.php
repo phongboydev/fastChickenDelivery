@@ -5,10 +5,11 @@ namespace App\Models;
 use App\Models\Concerns\UsesUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
-    use HasFactory, UsesUuid;
+    use HasFactory, UsesUuid, SoftDeletes;
 
     protected $table = 'orders';
 
@@ -25,8 +26,22 @@ class Order extends Model
         'payment_status',
         ];
 
+    protected $casts = [
+        'order_date' => 'date:d-m-Y',
+        'payment_date' => 'date:d-m-Y',
+        ];
+
     // Set the primary key type to string
     protected $keyType = 'string';
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($order) {
+            $order->orderDetails()->delete();
+        });
+    }
 
     // Disable auto-incrementing as UUIDs are not integers
     public $incrementing = false;
@@ -72,5 +87,10 @@ class Order extends Model
     public function scopeTotalByMonth($query, $month)
     {
         return $query->whereMonth('order_date', $month)->sum('total_price');
+    }
+
+    public function generateOrderNumber()
+    {
+        return 'ORD' . strtoupper(uniqid());
     }
 }

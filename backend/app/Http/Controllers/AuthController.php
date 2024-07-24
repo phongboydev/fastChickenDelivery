@@ -75,6 +75,7 @@ class AuthController
         return response()->json([
             'accessToken' =>$token,
             'token_type' => 'Bearer',
+            'userData' => $user,
         ]);
     }
 

@@ -45,10 +45,10 @@ async function login() {
     // useCookie('userAbilityRules').value = userAbilityRules
     // ability.update(userAbilityRules)
 
-    // useCookie('userData').value = userData
+    useCookie('userData').value = userData
     useCookie('accessToken').value = accessToken
 
-    navigateTo(route.query.to ? String(route.query.to) : '/', { replace: true })
+    navigateTo(route.query.to ? String(route.query.to) : '/admin', { replace: true })
   }
   catch (err) {
     console.error(err)

@@ -26,6 +26,18 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  checkAddOrderSuccess: {
+    type: Boolean,
+    required: false,
+  },
+  cancelTitle: {
+    type: String,
+    required: true,
+  },
+  cancelMsg: {
+    type: String,
+    required: true,
+  },
 })
 
 const emit = defineEmits([
@@ -34,6 +46,7 @@ const emit = defineEmits([
   'push',
   'remove',
   'updateInForOrder',
+  'resetData',
 ])
 
 const unsubscribed = ref(false)
@@ -45,14 +58,12 @@ const onFormSubmit = () => {
   emit('update:isDialogVisible', false)
   emit('submit', orderData.value)
   unsubscribed.value = true
+  emit('resetData')
 }
 
 const onFormReset = () => {
   orderData.value = structuredClone(toRaw(props.orderData))
   emit('update:isDialogVisible', false)
-}
-
-const dialogModelValueUpdate = val => {
 }
 
 const removeOrderItem = id => {
@@ -108,6 +119,35 @@ const types = [
     value: 'export',
   },
 ]
+
+const paymentMethods = [
+  {
+    title: 'Tiền mặt',
+    value: 'cash',
+  },
+  {
+    title: 'Chuyển khoản',
+    value: 'transfer',
+  },
+]
+
+const paymentStatus = [
+  {
+    title: 'Chưa thanh toán',
+    value: 'unpaid',
+  },
+  {
+    title: 'Đã thanh toán',
+    value: 'paid',
+  },
+]
+
+const dialogModelValueUpdate = val => {
+}
+
+const closeDialog = () => {
+  emit('update:isDialogVisible', false)
+}
 </script>
 
 
@@ -118,7 +158,7 @@ const types = [
     @update:model-value="dialogModelValueUpdate"
   >
     <!-- Dialog close btn -->
-    <DialogCloseBtn @click="dialogModelValueUpdate(false)" />
+    <DialogCloseBtn @click="closeDialog" />
 
     <VCard class="pa-sm-10 pa-2">
       <VCardText>
@@ -143,7 +183,7 @@ const types = [
               sm="5"
             >
               <AppAutocomplete
-                v-model="selectedItem3"
+                v-model="orderData.userId"
                 label="Chọn khách hàng:"
                 :items="userData"
                 item-title="full_name"
@@ -160,7 +200,7 @@ const types = [
               sm="5"
             >
               <AppSelect
-                v-model="selectType"
+                v-model="orderData.type"
                 label="Kiểu:"
                 :items="types"
                 clearable
@@ -168,7 +208,7 @@ const types = [
               />
             </VCol>
           </VRow>
-          <VRow v-for="(order,key) in orderData.orderDetail">
+          <VRow v-for="(order,key) in orderData.orderDetails">
             <!-- 👉 Product List -->
             <VCard
               :key="key"
@@ -248,12 +288,11 @@ const types = [
 
               <!-- 👉 Item Actions -->
               <div
-                class="d-flex flex-column align-center item-actions"
+                class="d-flex flex-column align-center item-actions justify-center"
                 :class="$vuetify.display.smAndUp ? 'border-s' : 'border-b' "
               >
                 <IconBtn
-                  v-if="orderData.orderDetail.length > 1"
-                  class="mt-6"
+                  v-if="orderData.orderDetails.length > 1"
                   size="36"
                   @click="removeOrderItem(order.id)"
                 >
@@ -277,7 +316,40 @@ const types = [
             </VCard>
           </VRow>
 
-          <VCard class="mt-8">
+          <VRow class="mt-6">
+            <VCol
+              class="pa-0 mb-6"
+              cols="12"
+              sm="5"
+            >
+              <AppSelect
+                v-model="orderData.paymentMethod"
+                label="Phương thức thanh toán:"
+                :items="paymentMethods"
+                clearable
+                clear-icon="tabler-x"
+              />
+            </VCol>
+            <VCol
+              cols="12"
+              sm="2"
+            />
+            <VCol
+              class="pa-0"
+              cols="12"
+              sm="5"
+            >
+              <AppSelect
+                v-model="orderData.paymentStatus"
+                label="Trạng thái thanh toán"
+                :items="paymentStatus"
+                clearable
+                clear-icon="tabler-x"
+              />
+            </VCol>
+          </VRow>
+
+          <div class="mt-8 d-flex justify-center">
             <VBtn
               size="small"
               prepend-icon="tabler-plus"
@@ -285,7 +357,7 @@ const types = [
             >
               Add Item
             </VBtn>
-          </VCard>
+          </div>
         </VForm>
       </VCardText>
     </VCard>
@@ -345,10 +417,10 @@ const types = [
         </VBtn>
 
         <h1 class="text-h4 mb-4">
-          {{ props.cancelTitle }}
+          {{ cancelTitle }}
         </h1>
 
-        <p>{{ props.cancelMsg }}</p>
+        <p>{{ cancelMsg }}</p>
 
         <VBtn
           color="success"

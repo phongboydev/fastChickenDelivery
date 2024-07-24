@@ -33,6 +33,8 @@ class User extends Authenticatable
         'billing',
         'email_verified_at',
         'remember_token',
+        'bank_name',
+        'bank_account',
     ];
 
     /**

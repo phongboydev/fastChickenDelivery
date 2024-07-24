@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Traits\ResponseTraits;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class OrderController
 {
@@ -16,6 +20,16 @@ class OrderController
 
         $orders = Order::query();
         // Get param by condition
+
+        // User
+        if(isset($request['userId'])) {
+            $orders->where('user_id', $request['userId']);
+        }
+
+        // Order date
+        if(isset($request['orderDate'])) {
+            $orders->whereDate('order_date', $request['orderDate']);
+        }
 
         // Search
         if(isset($request['q'])) {
@@ -85,10 +99,56 @@ class OrderController
 
     public function store(Request $request)
     {
-        $order = new Order($request->all());
-        if($order->save()) {
+        $request = $request->all();
+
+        DB::beginTransaction();
+        try {
+            $order = new Order();
+            $order->order_number = $order->generateOrderNumber();
+            $order->type = $request['type'];
+            $order->order_date = Carbon::now();
+            $order->payment_status = $request['paymentStatus'];
+            $order->payment_method = $request['paymentMethod'];
+            $order->user_id = $request['userId'];
+
+            if($request['paymentStatus'] == 'paid') {
+                $order->payment_date = Carbon::now();
+            }
+
+            // Save order
+            $order->save();
+
+            // Save order details
+            $orderDetails = [];
+            $totalPriceFinal = 0;
+            foreach($request['orderDetails'] as $item) {
+                $orderDetails[] = [
+                    'id' => Str::uuid(),
+                    'order_id' => $order->id,
+                    'product_by_day_id' => $item['productId'],
+                    'quantity' => $item['quantity'],
+                    'price' => $item['price'],
+                    'total_price' => $item['totalPrice'],
+                ];
+
+                $totalPriceFinal += $item['totalPrice'];
+            }
+
+            OrderDetail::insert($orderDetails);
+
+            $order->total_price = $totalPriceFinal;
+            $order->save();
+
+            DB::commit();
+
             return $this->responseData(201, 'Create order success', $order);
+
+        }catch (\Exception $e) {
+            logger($e->getMessage());
+            DB::rollBack();
+            return $this->responseData(400, 'Create order fail');
         }
+
         return $this->responseData(400, 'Create order fail');
     }
 
@@ -106,4 +166,5 @@ class OrderController
         }
         return $this->responseData(404, 'Order not found');
     }
+
 }
