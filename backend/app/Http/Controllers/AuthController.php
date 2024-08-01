@@ -15,6 +15,7 @@ class AuthController
      *
      * @param Request $request
      *
+     *
      * @return JsonResponse [string] message
      */
     public function register(Request $request)
