@@ -14,6 +14,7 @@ class AuthController
      * Create user
      *
      * @param Request $request
+     *
      * @return JsonResponse [string] message
      */
     public function register(Request $request)
