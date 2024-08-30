@@ -158,7 +158,6 @@
     "unrefElement": true,
     "until": true,
     "urlValidator": true,
-    "useAbility": true,
     "useAbs": true,
     "useActiveElement": true,
     "useAnimate": true,

@@ -1,6 +1,4 @@
 import { defu } from 'defu'
-
-
 export const useApi= (url, options = {}) => {
   const config = useRuntimeConfig()
   const accessToken = useCookie('accessToken')

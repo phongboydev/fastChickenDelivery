@@ -27,6 +27,7 @@ if (isMobile)
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
+
       <ScrollToTop />
     </VApp>
   </VLocaleProvider>

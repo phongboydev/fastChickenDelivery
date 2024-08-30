@@ -28,26 +28,9 @@ export default defineNuxtConfig({
     '@/plugins/iconify/icons.css',
   ],
 
-  /*
-    ❗ Please read the docs before updating runtimeConfig
-    https://nuxt.com/docs/guide/going-further/runtime-config
-  */
-  runtimeConfig: {
-    // Private keys are only available on the server
-    AUTH_ORIGIN: process.env.AUTH_ORIGIN,
-    AUTH_SECRET: process.env.AUTH_SECRET,
-
-    // Public keys that are exposed to the client.
-    public: {
-      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || '/api',
-    },
-  },
   components: {
     dirs: [{
       path: '@/@core/components',
-      pathPrefix: false,
-    }, {
-      path: '@/views/demos',
       pathPrefix: false,
     }, {
       path: '~/components/global',
@@ -58,31 +41,25 @@ export default defineNuxtConfig({
     }],
   },
 
-  auth: {
-    baseURL: process.env.AUTH_ORIGIN,
-    globalAppMiddleware: false,
-
-    provider: {
-      type: 'authjs',
-    },
-  },
-
-  plugins: [
-    '@/plugins/casl/index.js',
-    '@/plugins/vuetify/index.js',
-    '@/plugins/i18n/index.js',
-    '@/plugins/iconify/index.js',
-  ],
+  plugins: ['@/plugins/vuetify/index.js', '@/plugins/iconify/index.js'],
 
   imports: {
     dirs: ['./@core/utils', './@core/composable/', './plugins/*/composables/*'],
-    presets: ['vue-i18n'],
+    presets: [],
   },
 
   hooks: {},
 
   experimental: {
     typedPages: true,
+  },
+
+  runtimeConfig: {
+
+    // Public keys that are exposed to the client.
+    public: {
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL || '/api',
+    },
   },
 
   typescript: {
@@ -152,13 +129,7 @@ export default defineNuxtConfig({
           configFile: 'assets/styles/variables/_vuetify.scss',
         },
       }),
-      VueI18nPlugin({
-        runtimeOnly: true,
-        compositionOnly: true, ssr: true,
-        include: [
-          fileURLToPath(new URL('./plugins/i18n/locales/**', import.meta.url)),
-        ],
-      }),
+      null,
     ],
   },
 
@@ -166,5 +137,5 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
 
-  modules: ['@vueuse/nuxt', '@nuxtjs/device', '@sidebase/nuxt-auth', '@pinia/nuxt'],
+  modules: ['@vueuse/nuxt', '@nuxtjs/device', '@pinia/nuxt'],
 })
