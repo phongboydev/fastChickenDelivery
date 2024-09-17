@@ -35,6 +35,8 @@ RUN composer dump-autoload --optimize
 
 RUN php artisan key:generate
 
+RUN php artisan optimize
+
 RUN docker-php-ext-install pdo pdo_mysql
 
 EXPOSE 8000
