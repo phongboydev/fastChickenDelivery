@@ -36,7 +36,7 @@ async function login() {
         password: form.value.password,
       },
       onResponseError({ response }) {
-
+          console.log(response)
       },
     })
 

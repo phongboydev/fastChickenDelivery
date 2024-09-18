@@ -23,6 +23,8 @@ COPY . .
 # Build the application
 RUN npm run build
 
+# Expose Nuxt.js default port
 EXPOSE 3000
 
-CMD ["npm", "start"]
+# Start the Nuxt.js app
+CMD ["npm", "run", "start"]
