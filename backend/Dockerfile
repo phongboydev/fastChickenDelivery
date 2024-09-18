@@ -42,6 +42,9 @@ RUN docker-php-ext-install pdo pdo_mysql
 # Set file permissions
 RUN chown -R www-data:www-data /var/www
 
-EXPOSE 8000
-
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+# Instead, add these lines:
+RUN mkdir -p /var/www/storage/logs
+RUN chmod -R 775 /var/www/storage
+    
+# Use PHP-FPM to run the application
+CMD ["php-fpm"]
