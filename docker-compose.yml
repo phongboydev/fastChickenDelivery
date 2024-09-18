@@ -44,6 +44,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
@@ -78,6 +80,18 @@ services:
     networks:
       - frontend
       - backend
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+    depends_on:
+      - mysql
+    environment:
+      - ADMINER_DEFAULT_SERVER=mysql
 
 volumes:
   dbdata:
