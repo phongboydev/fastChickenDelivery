@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:18 as build-stage
 
 WORKDIR /app
 
@@ -23,8 +23,20 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Expose Nuxt.js default port
+# Stage 2: Create the production image
+FROM node:18 as production-stage
+
+WORKDIR /app
+
+# Copy chỉ các file cần thiết từ giai đoạn build
+COPY --from=build-stage /app ./
+
+# Chạy ứng dụng Nuxt.js trong production mode
+ENV NODE_ENV=production
+
+# Expose cổng mà Nuxt.js chạy
 EXPOSE 3000
 
-# Start the Nuxt.js app
-CMD ["npm", "run", "start"]
+# Start server Nuxt.js
+# Start the application
+CMD ["node", ".output/server/index.mjs"]
